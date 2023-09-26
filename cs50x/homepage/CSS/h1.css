@@ -1,0 +1,44 @@
+html
+{
+    height:100%;
+}
+body
+{
+    height:100%;
+    background-image: url("/CSS/matrix.gif");
+    background-size:26%;
+    color: #06b406;
+    font-family: courier;
+    text-align: center;
+    text-background: black;
+    margin:0;
+    padding:0;
+}
+#back
+{
+    color: #06b406;
+    text-align: left;
+    text-decoration-line: underline;
+    text-decoration-color: green;
+    background-color:black;
+    margin-bottom:0;
+}
+#div1
+{
+    text-align: center;
+    margin:auto;
+    padding: auto;
+    background-color:black;
+    width:60%;
+    height:100%;
+}
+#start
+{
+    text-decoration:none;
+    margin:auto;
+    text-align: center center;
+    width:fit-content;
+    border-style:inset;
+    border-color: #06b406;
+    margin-bottom:5%;
+}

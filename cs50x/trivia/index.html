@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div id='q1' class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <p>What's the first program any programmer writes?</p>
+                <button id="b0">A program that starts, but doesn't do anything</button>
+                <br><br>
+                <button id="b1">A program that outputs "Hello World!"</button>
+                <br><br>
+                <button id="b2">A program to calculate the result of 1 + 1</button>
+                <p id="result1"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>What's the name of the graphical programming language that was created at MIT, to teach beginner how to code?</h3>
+                <form onsubmit="return false">
+                    <input id='q2input' autocomplete='off' placeholder="Type Answer" type="text">
+                    <button id="q2submit">Check Answer</button>
+                    <p id ='result2'></p>
+                </form>
+
+           </div>
+        </div>
+        <script>
+            // TODO: Add code to check answers to questions
+            // Question 1
+                let q1 = document.querySelector('#q1');
+                let r1 = document.querySelector('#result1');
+                document.querySelector('#b1').addEventListener('click', function()
+                {
+                    q1.querySelector('#b1').style.backgroundColor = '#00cc00';
+                    r1.innerHTML = 'Correct!';
+                });
+                document.querySelector('#b0').addEventListener('click', function()
+                {
+                    q1.querySelector('#b0').style.backgroundColor = 'red';
+                    r1.innerHTML = 'Incorrect';
+
+                });
+                document.querySelector('#b2').addEventListener('click', function()
+                {
+                    q1.querySelector('#b2').style.backgroundColor = 'red';
+                    r1.innerHTML = 'Incorrect';
+                });
+
+            //Question 2
+            let answer = 'scratch';
+            let input = document.querySelector('#q2input');
+            let submit = document.querySelector('#q2submit');
+            let r2 = document.querySelector('#result2');
+            submit.addEventListener('click', function()
+            {
+                if (answer.localeCompare(input.value) == 0)
+                {
+                    r2.innerHTML = 'Correct!';
+                    input.style.backgroundColor = '#00cc00';
+                }
+                else
+                {
+                    r2.innerHTML = 'Inorrect';
+                    input.style.backgroundColor = 'red';
+                }
+            });
+        </script>
+    </body>
+</html>

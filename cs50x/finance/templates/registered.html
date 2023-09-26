@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <div class="mb-3">Registered Successfully!</div>
+    <br>
+    <form action="/login" method="GET">
+        <button class="btn btn-primary" onclick="location.href = '/login';">To Login Page</button>
+    </form>
+
+{% endblock %}

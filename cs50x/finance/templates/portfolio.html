@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <h1>My Portfolio</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Stock Symbol</th>
+                <th scope="col">Number of Shares</th>
+                <th scope="col">Current Price</th>
+                <th scope="col">Total Value</th>
+            </tr>
+        </thead>
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock in stocks %}
+                <tr>
+                    <td>{{ stock["stock"]}}</td>
+                    <td>{{ stock["shares"]}}</td>
+                    <td>{{ stock["price"] | usd}}</td>
+                    <td>{{ stock["total_stock_value"] | usd }}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Cash Balance</th>
+                <th>{{ cash_balance | usd }}</th>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Grand Total</th>
+                <th>{{ grand_total | usd }}</th>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+{% endblock %}

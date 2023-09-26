@@ -1,0 +1,6 @@
+I would say that the way Spotify chracterizes their listerners is fine, but I have a suggestion that might prove helpful.
+Instead of taking the average of the user's top 100 songs only, the system should take the total length of sessions per each mood.
+A session being a period of time where the user listened to songs of a simmilar mood. This might be helpful because people often play music in
+the background that is in varying types of moods. By changing the Aura value to change by sessions and not single songs, this
+might reduce the effect of single songs charcterizing the Aura.
+
