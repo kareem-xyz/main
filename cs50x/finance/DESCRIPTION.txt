@@ -1,8 +1,0 @@
-MOST CRAZY PROBLEM SET IN THE WHOLE COURSE. Lots of fun though.
-Languages Used:
-Python
-Html
-Css
-jinja
-flask
-sql
