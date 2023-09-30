@@ -1,0 +1,22 @@
+.homepage
+{
+    background-image: url("/CSS/background.jpg");
+    background-size: cover;
+    backgroud-position: center center;
+    font-family: georgia;
+    text-align: center;
+    color:#a8bfc2;
+}
+
+.hm-hr
+{
+    width:50%;
+    margin-left:25%;
+    text-align:center;
+    color:gray;
+}
+
+a:visited
+{
+    color: black;
+}

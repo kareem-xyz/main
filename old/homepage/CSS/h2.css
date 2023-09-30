@@ -1,0 +1,84 @@
+html {
+    height: 100%;
+    background-color: black;
+}
+
+body {
+    background-image: url("numbers.gif");
+    background-size: 40%;
+    background-position: right;
+    background-attachment: scroll;
+    color: #06b406;
+    font-family: courier;
+    text-background: black;
+    text-color: green;
+    margin: 0%;
+    padding: 0%;
+}
+
+button {
+    background-color: black;
+    width: 600px;
+    color: #06b406;
+    border: 1px solid #025402;
+    transition-duration: 0.1s;
+}
+
+button:hover {
+    background-color: #06b406;
+    color: black;
+}
+
+#back {
+    width: fit-content;
+    margin-left: 0%;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+input {
+    background-color: black;
+    color: #06b406;
+    border: 1px solid #025402;
+    width: 40%;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px black inset;
+    -webkit-text-fill-color: #06b406;
+}
+
+#divmain {
+    text-align: center;
+    background-color: black;
+    background-position: fixed;
+    width: 60%;
+    height: auto;
+}
+
+#submit {
+    width: 40%;
+    margin: 10%;
+    margin-bottom: 10%;
+    margin-top: 0%;
+    font-size: 200%;
+}
+
+.questions {
+    text-align: left;
+    margin-left: 5%;
+    padding: 3px;
+
+}
+
+.question {
+    margin-bottom: 10%;
+}
+
+.answers {
+    margin-left: 5%;
+    width: 60%;
+}

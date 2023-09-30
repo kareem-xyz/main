@@ -1,0 +1,10 @@
+{
+    "gitdoc.enabled": true,
+    "files.associations": {
+        "tuple": "c"
+    },
+    "editor.guides.highlightActiveIndentation": true,
+    "editor.guides.bracketPairs": "active",
+    "workbench.tree.renderIndentGuides": "always",
+    "editor.guides.bracketPairsHorizontal": false
+}
