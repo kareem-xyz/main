@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "compilerPath": "/home/kareem/main/old/bottomup/bottomup.c",
+            "intelliSenseMode": "${default}"
+        }
+    ],
+    "version": 4
+}

@@ -6,5 +6,8 @@
     "action": {
         "default_popup": "hello.html",
         "default_icon": "hello_extensions.png"
+    },
+    "icons": {
+        "48": "hello_extensions.png"
     }
 }
