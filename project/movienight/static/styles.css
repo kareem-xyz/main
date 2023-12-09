@@ -1,0 +1,20 @@
+html{
+    height: 100%;
+}
+body 
+{
+    margin-top: 2%;
+    height:100%;
+    text-align: center;
+    background-color: black;
+    align-content: center;
+}
+#main 
+{
+width:50%;
+height:100%;
+margin-left: 25%;
+margin-right: 25%;
+align-items: center;
+color: white;
+}
