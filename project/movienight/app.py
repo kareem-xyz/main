@@ -8,11 +8,15 @@ app = Flask(__name__)
 def homepage():
     return render_template('homepage.html')
     
-@app.route('/compare', methods=['GET', 'POST'])
-def compare():
+@app.route('/search', methods=['GET', 'POST'])
+def search():
     m1_input = request.form.get("movie1")
     m2_input = request.form.get("movie2")
-     
+    
+    # Check for invalid input
+    if not (m1_input and m2_input):
+        return redirect('/')
+    
     # Movie Databases Api to get Movie's Data.
     # https://rapidapi.com/SAdrian/api/moviesdatabase/
     #----
@@ -22,7 +26,7 @@ def compare():
     m2_url = "https://moviesdatabase.p.rapidapi.com/titles/search/title/" + m2_input
 
     # Api Specifics (login key and query parameters)
-    querystring = {"exact":"true","titleType":"movie"}
+    querystring = {"exact":"false","titleType":"movie"}
     headers = {
         "X-RapidAPI-Key": "dcabfff8b1msh47092185488eb22p1b47e2jsn45e1e47ab1f7",
         "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com"
@@ -32,5 +36,13 @@ def compare():
     m1_response = requests.get(m1_url, headers=headers, params=querystring)
     m2_response = requests.get(m2_url, headers=headers, params=querystring)
 
-    return m1_response.json
+    m1_json = m1_response.json()
+    m2_json = m2_response.json()
+
+    # Next stage is developing the search result page, adding thumbnails images from bootstrap, and making them resposive to pressing so users can choose which movie they want.
+    # should experiment and read about how to manipulate jinja into showing images with urls from json files
+    return render_template('search.html', m1=m1_json, m2=m2_json)
+
+
+
 
