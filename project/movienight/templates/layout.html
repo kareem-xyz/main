@@ -12,10 +12,11 @@
     </head>
 
     <body>
-        <div id="main" >
+        <div id="main" class="container" >
             <h1>Movie Night</h1>
+            <br>
             <form action="/search" method="post">
-                <div class="row g-3">
+                <div class="row g-3 column-gap-5">
                   <div class="col-md">
                     <input name='movie1' type="text" class="form-control" placeholder="Movie 1" required autocomplete="off">
                   </div>
@@ -29,8 +30,10 @@
             </form>
             <br>
             {% block body %}
+            <div class="grid gap-5 row-gap-5">
                 {% block table %}
                 {% endblock %}
+            </div>
             {% endblock %}
             <br><br>
             <footer class="mb-5 small text-center">
