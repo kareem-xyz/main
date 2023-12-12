@@ -4,19 +4,28 @@
     <!-- {% for item in iterable %}  -->
     <!-- for every movie in the results (for both movies) provide a row and a column -->
     <!-- {% endfor %} -->
-    <div class="row g-4 row-cols-2 column-gap-3">
-        <div class="col-md bg-dark text-white">
+    <div class="row g-4 row-cols-2 column-gap-3 ">
+        <div class="col-md bg-dark text-white p-1">
             <!-- jinja syntax comes here to fill photo -->
-            <img src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg" class="img-fluid rounded float-start" alt="no image">
-            Inception
+            <div class="col-3 p-1">
+                <img src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg" class="img-fluid rounded float-start" alt="no image">
+            </div>
+            <div class="col-3 p-1">
+                inception
+            </div>
+            
+            <br>
+            <div class="col-12 p-1">
+                <button class="btn btn-outline-primary" type="button">Button</button>
+            </div>
         </div>
-        <div class="col-md bg-dark text-white">
+        <div class="col-md bg-dark text-white p-1">
             <img src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg" class="img-fluid rounded float-start" alt="no image">
             Inception
         </div>
     </div>  
     <br>
-    <div class="row g-4 row-cols-2 column-gap-3">
+    <div class="row g-4 row-cols-2 column-gap-3 ">
         <div class="col-md bg-dark text-white">
             <!-- jinja syntax comes here to fill photo -->
             <img src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg" class="img-fluid rounded float-start" alt="no image">
