@@ -1,0 +1,22 @@
+TASKS 
+    # Try debugging or refining the search results for example:
+        - Sorting to show the best movie or most popular or most matching (could use len() here)
+        - Unallowing bad input or manipulative
+
+    # Work on reforming the image sizes and row sizes
+
+    # CSS Work on Choose Button (highlight chosen and unhighlight the others, by unhighlighting under the list div) 
+        function compare(button):
+        {
+            ##....some code
+
+            # for example: list = button.getAttribute('data-list');
+            # buttons = list.querySelectorAll('button');
+            # for (i = 0; i < buttons.length; i++) 
+            {
+                buttons[i].classList.remove("btn-primary");
+                buttons[i].classList.add("btn-outline-primary")
+            }
+            chosenbutton.classList.add("btn-primary");
+        }
+    

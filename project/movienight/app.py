@@ -1,7 +1,11 @@
 from flask import Flask, render_template, request, redirect 
 import requests # Used in the query Api
+
 # Configure Application
 app = Flask(__name__)
+
+# Ensure templates are auto-reloaded
+app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 ####FOR TESTING
 @app.route('/test')
@@ -19,11 +23,11 @@ def homepage():
     
 @app.route('/search', methods=['GET', 'POST'])
 def search():
+    m0_input = request.form.get("movie0")
     m1_input = request.form.get("movie1")
-    m2_input = request.form.get("movie2")
     
     # Check for invalid input
-    if not (m1_input and m2_input):
+    if not (m0_input and m1_input):
         return redirect('/')
     
     # Movie Databases Api to get Movie's Data.
@@ -31,8 +35,8 @@ def search():
     #----
 
     # Format Api Urls for each movie inputed
+    m0_url = "https://moviesdatabase.p.rapidapi.com/titles/search/title/" + m0_input
     m1_url = "https://moviesdatabase.p.rapidapi.com/titles/search/title/" + m1_input
-    m2_url = "https://moviesdatabase.p.rapidapi.com/titles/search/title/" + m2_input
 
     # Api Specifics (login key and query parameters)
     querystring = {"exact":"false","titleType":"movie"}
@@ -42,15 +46,13 @@ def search():
     }
 
     # Run Api
+    m0_response = requests.get(m0_url, headers=headers, params=querystring)
     m1_response = requests.get(m1_url, headers=headers, params=querystring)
-    m2_response = requests.get(m2_url, headers=headers, params=querystring)
 
+    m0_json = m0_response.json()
     m1_json = m1_response.json()
-    m2_json = m2_response.json()
-    # Next stage is developing the search result page, adding thumbnails images from bootstrap, and making them resposive to pressing so users can choose which movie they want.
-    # should experiment and read about how to manipulate jinja into showing images with urls from json files
-    # Pass Api response to render search results
-    return render_template('search.html', list1=m1_json["results"], list2=m2_json["results"])
+
+    return render_template('search.html', list0=m0_json["results"], list1=m1_json["results"], q0=m0_input, q1=m1_input)
 
 
 

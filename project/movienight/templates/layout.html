@@ -18,10 +18,10 @@
             <form action="/search" method="post">
                 <div class="row gx-5 gy-4">
                   <div class="col">
-                    <input name='movie1' type="text" class="form-control" placeholder="Movie 1" required autocomplete="off">
+                    <input name='movie0' type="text" class="form-control" placeholder="Movie Name" required autocomplete="off">
                   </div>
                   <div class="col">
-                    <input name='movie2' type="text" class="form-control" placeholder="Movie 2" required autocomplete="off">
+                    <input name='movie1' type="text" class="form-control" placeholder="Movie Name" required autocomplete="off">
                   </div>
                   <div class="col-12">
                       <button type="submit" class="btn btn-outline-primary w-50">Search</button>
@@ -32,17 +32,14 @@
             </form>
             <br>
             <div class="row row-cols-2 gx-5 gy-2">
-                <div class="col gy-2">
-                    {% block list1 %}
-                        <!-- CONTINUE REVIEWING FROM HERE TEST.HTML and TESTNEW.HTML -->
+                <div class="col">
+                    {% block list0 %}
                     {% endblock %}
                 </div>
                 <div class="col">
-                    {% block list2 %}
+                    {% block list1 %}
                     {% endblock %}
                 </div>
-                {% block table %}
-                {% endblock %}
             </div>
             {% block body %}
             {% endblock %}
