@@ -10,7 +10,7 @@
 {% block list1 %}
  <!-- JINJA BLCOK REPEATED FOR EACH ELEMENT IN THE LIST PASSED -->
 {% for movie in list1 %}
-<div class ="row bg-dark">
+<div class ="row bg-dark mb-4">
     <div class="col">
         <img src="{{ movie['primaryImage']['url'] }}" class="img-fluid rounded float-start" alt="no image">
     </div>
@@ -28,7 +28,7 @@
 
 {% block list2 %}
 {% for movie in list2 %}
-<div class ="row bg-dark">
+<div class ="row bg-dark mb-4">
     <div class="col">
         <img src="{{ movie['primaryImage']['url'] }}" class="img-fluid rounded float-start" alt="no image">
     </div>
