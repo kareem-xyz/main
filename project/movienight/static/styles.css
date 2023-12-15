@@ -11,10 +11,9 @@ body
 }
 #main 
 {
-width:50%;
+width:60%;
 height:100%;
-margin-left: 25%;
-margin-right: 25%;
+margin: auto;
 align-items: center;
 color: white;
 }

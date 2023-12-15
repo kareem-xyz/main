@@ -1,4 +1,46 @@
 {% extends 'layout.html' %}
-{% block body %}
-<img src="{{ m1['results'][7]['primaryImage']['url'] }}" class="img-fluid" alt="no image">
+
+{% block formSearch %}
+<form action="/compare" method="post">
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary w-50">Compare</button>
+    </div>
+
 {% endblock %}
+{% block list1 %}
+ <!-- JINJA BLCOK REPEATED FOR EACH ELEMENT IN THE LIST PASSED -->
+{% for movie in list1 %}
+<div class ="row bg-dark">
+    <div class="col">
+        <img src="{{ movie['primaryImage']['url'] }}" class="img-fluid rounded float-start" alt="no image">
+    </div>
+    <div class="col">
+        <h4>{{ movie["titleText"]["text"] }}
+        </h4>
+    </div>
+    <div class="col-12 p-1">
+        <button class="btn btn-outline-primary" type="button">Choose</button>
+    </div>
+</div>
+{% endfor %}
+<!-- END OF REPEAT -->
+{% endblock %}
+
+{% block list2 %}
+{% for movie in list2 %}
+<div class ="row bg-dark">
+    <div class="col">
+        <img src="{{ movie['primaryImage']['url'] }}" class="img-fluid rounded float-start" alt="no image">
+    </div>
+    <div class="col">
+        <h4>{{ movie['titleText']['text'] }}
+        </h4>
+    </div>
+    <div class="col-12 p-1">
+        <button class="btn btn-outline-primary" type="button">Choose</button>
+    </div>
+</div>
+{% endfor %}
+<!-- END OF REPEAT -->
+{% endblock %}
+</form>

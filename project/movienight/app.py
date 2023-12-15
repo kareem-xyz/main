@@ -7,6 +7,10 @@ app = Flask(__name__)
 @app.route('/test')
 def test():
     return render_template('test.html')
+
+@app.route('/testnew')
+def testnew():
+    return render_template('testnew.html')
 #####
 # Load homepage
 @app.route('/')
@@ -46,7 +50,7 @@ def search():
     # Next stage is developing the search result page, adding thumbnails images from bootstrap, and making them resposive to pressing so users can choose which movie they want.
     # should experiment and read about how to manipulate jinja into showing images with urls from json files
     # Pass Api response to render search results
-    return render_template('search.html', m1=m1_json, m2=m2_json)
+    return render_template('search.html', list1=m1_json["results"], list2=m2_json["results"])
 
 
 

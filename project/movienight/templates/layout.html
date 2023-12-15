@@ -16,7 +16,7 @@
             <h1>Movie Night</h1>
             <br>
             <form action="/search" method="post">
-                <div class="row">
+                <div class="row gx-5 gy-4">
                   <div class="col">
                     <input name='movie1' type="text" class="form-control" placeholder="Movie 1" required autocomplete="off">
                   </div>
@@ -24,17 +24,27 @@
                     <input name='movie2' type="text" class="form-control" placeholder="Movie 2" required autocomplete="off">
                   </div>
                   <div class="col-12">
-                      <button type="submit" class="btn btn-primary">Compare</button>
+                      <button type="submit" class="btn btn-outline-primary w-50">Search</button>
                   </div>
+                  {% block formSearch %}
+                  {% endblock %}
                 </div>
             </form>
             <br>
-            <!-- CONTINUE REVIEWING FROM HERE -->
-            {% block body %}
-            <div class="grid gap-5 row-gap-5">
+            <div class="row row-cols-2 gx-5 gy-2">
+                <div class="col gy-2">
+                    {% block list1 %}
+                        <!-- CONTINUE REVIEWING FROM HERE TEST.HTML and TESTNEW.HTML -->
+                    {% endblock %}
+                </div>
+                <div class="col">
+                    {% block list2 %}
+                    {% endblock %}
+                </div>
                 {% block table %}
                 {% endblock %}
             </div>
+            {% block body %}
             {% endblock %}
             <br><br>
             <footer class="mb-5 small text-center">
