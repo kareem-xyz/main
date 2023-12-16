@@ -2,11 +2,19 @@ TASKS
     # Try debugging or refining the search results for example:
         - Sorting to show the best movie or most popular or most matching (could use len() here)
         - Unallowing bad input or manipulative
+        - Find a solution to the no movie found problem
+            - might have to fall back to the method of using a database.
 
     # Work on reforming the image sizes and row sizes
 
-    # CSS Work on Choose Button (highlight chosen and unhighlight the others, by unhighlighting under the list div) 
-        function compare(button):
+    # Design the comparison page between the two movies:
+        # after the pressed compare button run compare()
+        # take both movies id from choices[]
+        # run api request using id (not sure which endpoint to use yet)
+        # display these information
+        
+    # DONE : CSS Work on Choose Button (highlight chosen and unhighlight the others, by unhighlighting under the list div) 
+        function choose(button):
         {
             ##....some code
 
