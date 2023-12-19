@@ -60,6 +60,26 @@ def compare():
     # Retrieve data from Javascript request and convert to list.
     data = request.form['choices']
     choices = json.loads(data)
+    # Convert to string for query
+    ids_str = choices[0] + ',' + choices[1]
+    print(ids_str)
 
     # Reqest data from Api by id endpoint
-    # render the template of comparison.html
+    url = "https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids"
+
+    querystring = {"idsList":ids_str}
+
+    headers = {
+        "X-RapidAPI-Key": "dcabfff8b1msh47092185488eb22p1b47e2jsn45e1e47ab1f7",
+        "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com"
+    }
+
+    response = requests.get(url, headers=headers, params=querystring)
+    """
+    Api endpoints to be used
+    # For all data, but make sure to messa around with the extra info parameters to get data on actors ratings runtime and so on.
+    /titles/{id}/
+    also 
+    """
+    print(response.json())
+    return response.json()

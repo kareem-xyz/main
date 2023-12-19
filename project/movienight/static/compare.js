@@ -1,6 +1,6 @@
 // initialise variables for efficiency
 const choices = [2];    // Stores choices by movie id
-const highlighted = [2]; // for css highlighting
+const highlighted = [2]; // for css highlighting, stores button
 const list_0 = document.getElementById("list_0");   // References html element of list 0
 const list_1 = document.getElementById("list_1");   // References html element of list 1
 
@@ -23,10 +23,10 @@ function choose(button)
     movie.classList.remove("btn-outline-primary");
     try 
     {
-        // ###############need to adjust highlight as a list not a var
         // Remove highlight from the movie chosen before 
         highlighted[movie_list].classList.add("btn-outline-primary");
         highlighted[movie_list].classList.remove("btn-primary");
+        highlighted[movie_list].innerHTML = "Choose"
     }
     catch(err) 
     {
@@ -36,6 +36,8 @@ function choose(button)
     // Save new movie
     highlighted[movie_list] = movie;
     choices[movie_list] = movie.getAttribute("data-id");
+    tmp = 'movie' + movie_list;
+    document.getElementById(tmp).value = movie.getAttribute("data-title");
 
 }
 function compare()

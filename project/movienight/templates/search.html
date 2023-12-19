@@ -15,7 +15,7 @@
         </div>
         <div class="col">
             <h4>{{ movie["titleText"]["text"] }} ({{movie["releaseYear"]["year"]}})</h4>
-            <button class="btn btn-outline-primary" onclick="choose(this);" type="button" data-list="0" data-id="{{ movie['id'] }}">Choose</button>
+            <button class="btn btn-outline-primary" onclick="choose(this);" type="button" data-list="0" data-id="{{ movie['id'] }}" data-title="{{ movie['titleText']['text'] }}">Choose</button>
         </div>
     </div>
     {% endfor %}
@@ -35,7 +35,7 @@
             </div>
             <div class="col">
                 <h5>{{ movie['titleText']['text'] }} ({{movie["releaseYear"]["year"]}})</h5>
-                <button class="btn btn-outline-primary" onclick="choose(this);" type="button" data-list="1" data-id="{{ movie['id'] }}">Choose</button>
+                <button class="btn btn-outline-primary" onclick="choose(this);" type="button" data-list="1" data-id="{{ movie['id'] }}" data-title="{{ movie['titleText']['text'] }}">Choose</button>
             </div>
         </div>
     {% endfor %}
