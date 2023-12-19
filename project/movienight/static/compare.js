@@ -1,20 +1,22 @@
 // initialise variables for efficiency
-const choices = [2];    // Array for Choices
-const list_0 = document.getElementById("list_0");   // References parent element of list 0
-const list_1 = document.getElementById("list_1");   // References parent element of list 1
-const highlighted = [2];
+const choices = [2];    // Stores choices by movie id
+const highlighted = [2]; // for css highlighting
+const list_0 = document.getElementById("list_0");   // References html element of list 0
+const list_1 = document.getElementById("list_1");   // References html element of list 1
 
+// Initialise Arrays
 for (let i = 0; i < 2; i++)
 {
     choices[i] = "empty";
     highlighted[i] = "empty"
 }
 
-// Run whenever a choose movie button is pressed to choose the movie and makes sure to not conflict lists.
+// Run whenever a choose movie button is pressed to note the movie and makes sure to not conflict lists.
 function choose(button)
 {
     var movie = button;
     movie_list = movie.getAttribute("data-list")
+    
     // Highlight new chosen movie
     movie.innerHTML = "Chosen!";
     movie.classList.add("btn-primary");
@@ -36,7 +38,13 @@ function choose(button)
     choices[movie_list] = movie.getAttribute("data-id");
 
 }
-function compare(button)
+function compare()
 {
-    // Submit movies chosen back to the python flask app to process them and display the new page of content.
+    // Convert array to json
+    choices_json =  JSON.stringify(choices);
+
+    // Post movies chosen back to the python flask app to process them and display the new page of content.
+    $.post( "/compare", {
+        choices: choices_json
+    });
 }

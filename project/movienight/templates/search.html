@@ -2,22 +2,19 @@
 
 {% block formSearch %}
     <div class="col-12">
-        <button type="submit" class="btn btn-primary w-50" onclick="compare()">Compare</button>
+        <button type="submit" class="btn btn-warning w-50" onclick="compare();">Compare</button>
     </div>
 {% endblock %}
 
 {% block list0 %}
     {% if list0 %}
     {% for movie in list0 %}
-    <div class ="row bg-dark mb-4">
+    <div class ="row bg-dark mb-4 p-0">
         <div class="col">
-            <img src="{{ movie['primaryImage']['url'] }}" class="img-fluid rounded float-start" alt="no image">
+            <img src="{{ movie['primaryImage']['url'] }}" class="img-fluid rounded float-start" onerror="this.onerror=null; this.src='static/noimage.jpg'">
         </div>
         <div class="col">
-            <h4>{{ movie["titleText"]["text"] }}
-            </h4>
-        </div>
-        <div class="col-12 p-1">
+            <h4>{{ movie["titleText"]["text"] }} ({{movie["releaseYear"]["year"]}})</h4>
             <button class="btn btn-outline-primary" onclick="choose(this);" type="button" data-list="0" data-id="{{ movie['id'] }}">Choose</button>
         </div>
     </div>
@@ -32,20 +29,18 @@
 {% block list1 %}
     {% if list1 %}
     {% for movie in list1 %}
-        <div class ="row bg-dark mb-4 p-4">
+        <div class ="row bg-dark mb-4 p-0">
             <div class="col">
-                <img src="{{ movie['primaryImage']['url'] }}" class="img-fluid rounded float-start" alt="no image">
+                <img src="{{ movie['primaryImage']['url'] }}" class="img-fluid rounded float-start" onerror="this.onerror=null; this.src='static/noimage.jpg'">
             </div>
             <div class="col">
-                <h4>{{ movie['titleText']['text'] }}</h4>
-            </div>
-            <div class="col-12 p-1">
+                <h5>{{ movie['titleText']['text'] }} ({{movie["releaseYear"]["year"]}})</h5>
                 <button class="btn btn-outline-primary" onclick="choose(this);" type="button" data-list="1" data-id="{{ movie['id'] }}">Choose</button>
             </div>
         </div>
     {% endfor %}
     {% else %}
-    <div class ="row bg-dark mb-4">
+    <div class ="row bg-dark mb-4 p-4">
     No movies found for {{q1}}
     </div>
     {% endif %}

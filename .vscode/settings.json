@@ -1,5 +1,6 @@
 {
     "C_Cpp.default.compilerPath": "/usr/bin/clang",
     "editor.guides.highlightActiveBracketPair": false,
-    "editor.guides.bracketPairsHorizontal": false
+    "editor.guides.bracketPairsHorizontal": false,
+    "C_Cpp.errorSquiggles": "disabled"
 }

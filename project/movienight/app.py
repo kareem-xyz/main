@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect 
+import json
 import requests # Used in the query Api
 
 # Configure Application
@@ -54,6 +55,11 @@ def search():
 
     return render_template('search.html', list0=m0_json["results"], list1=m1_json["results"], q0=m0_input, q1=m1_input)
 
+@app.route('/compare', methods=['POST'])
+def compare():
+    # Retrieve data from Javascript request and convert to list.
+    data = request.form['choices']
+    choices = json.loads(data)
 
-
-
+    # Reqest data from Api by id endpoint
+    # render the template of comparison.html
