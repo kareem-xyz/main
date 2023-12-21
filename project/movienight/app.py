@@ -40,7 +40,7 @@ def search():
     m1_url = "https://moviesdatabase.p.rapidapi.com/titles/search/title/" + m1_input
 
     # Api Specifics (login key and query parameters)
-    querystring = {"exact":"false","titleType":"movie"}
+    querystring = {"exact":"false","titleType":"movie", "info":"custom_info"}
     headers = {
         "X-RapidAPI-Key": "dcabfff8b1msh47092185488eb22p1b47e2jsn45e1e47ab1f7",
         "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com"
@@ -50,6 +50,7 @@ def search():
     m0_response = requests.get(m0_url, headers=headers, params=querystring)
     m1_response = requests.get(m1_url, headers=headers, params=querystring)
 
+    # Convert response to json format to exchange with JS
     m0_json = m0_response.json()
     m1_json = m1_response.json()
 
@@ -79,4 +80,4 @@ def compare():
     m0_json = response_0.json()
     m1_json = response_1.json()
     
-    return render_template('compare.html', m0=m0_json, m1=m1_json )
+    return render_template('compare.html', m0=m0_json, m1=m1_json)

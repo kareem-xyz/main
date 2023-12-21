@@ -10,18 +10,34 @@
     {% if list0 %}
     {% for movie in list0 %}
     <div class ="row bg-dark mb-4 p-0">
-        <div class="col">
-            <img src="{{ movie['primaryImage']['url'] }}" class="img-fluid rounded float-start" onerror="this.onerror=null; this.src='static/noimage.jpg'">
+        <div class="col ratio ratio-1x1">
+            <img src="{{ movie['primaryImage']['url'] }}" class="img-fluid rounded object-fit-cover rounded float-start " onerror="this.onerror=null; this.src='static/noimage.jpg'">
         </div>
-        <div class="col">
-            <h4>{{ movie["titleText"]["text"] }} ({{movie["releaseYear"]["year"]}})</h4>
+        <div class="col text-start">
+            <h6>{{movie["titleText"]["text"] }} ({{movie["releaseYear"]["year"]}})</h6>
+            {% if movie['runtime']['seconds'] %}
+                {% set secs = movie['runtime']['seconds']%}
+                {% set mins, hours = secs//60%60, secs//3600, %}
+                <p class="fst-italic fst-lighter fs-6">
+                {% if hours > 0 %}{{hours}}h{% endif %} 
+                {% if mins > 0 %}{{mins}}m{% endif %}
+                </p>
+        {% endif %}
+        {% if movie["plot"] %}
+        {% if movie["plot"]["plotText"] %}
+        {% if movie["plot"]["plotText"]["plainText"] %}
+            <p class="fst-italic fst-lighter fs-6 text-start">{{movie['plot']['plotText']['plainText']}}</p>
+        {% endif %}
+        {% endif %}
+        {% endif %}
+            <br>
             <button class="btn btn-outline-primary" onclick="choose(this);" type="button" data-list="0" data-id="{{ movie['id'] }}" data-title="{{ movie['titleText']['text'] }}">Choose</button>
         </div>
     </div>
     {% endfor %}
     {% else %}
     <div class ="row bg-dark mb-4 p-4">
-    NO movies found for {{q0}} 
+    NO movies found for '{{q0}}'
     </div>
     {% endif %}
 {% endblock %}
@@ -30,22 +46,41 @@
     {% if list1 %}
     {% for movie in list1 %}
         <div class ="row bg-dark mb-4 p-0">
-            <div class="col">
-                <img src="{{ movie['primaryImage']['url'] }}" class="img-fluid rounded float-start" onerror="this.onerror=null; this.src='static/noimage.jpg'">
+            <div class="col ratio ratio-1x1">
+                <img src="{{ movie['primaryImage']['url'] }}" class="img-fluid object-fit-cover rounded float-start" onerror="this.onerror=null; this.src='static/noimage.jpg'">
             </div>
-            <div class="col">
-                <h5>{{ movie['titleText']['text'] }} ({{movie["releaseYear"]["year"]}})</h5>
+            <div class="col text-start p-4">
+                <h6>{{ movie['titleText']['text'] }} ({{movie["releaseYear"]["year"]}})</h6>
+                {% if movie['runtime']['seconds'] %}
+                    {% set secs = movie['runtime']['seconds']%}
+                    {% set mins, hours = secs//60%60, secs//3600, %}
+                    <p class="fst-italic fst-lighter fs-6">
+                    {% if hours > 0 %}{{hours}}h{% endif %} 
+                    {% if mins > 0 %}{{mins}}m{% endif %}
+                    </p>
+                {% endif %}
+                {% if movie["plot"] %}
+                {% if movie["plot"]["plotText"] %}
+                {% if movie["plot"]["plotText"]["plainText"] %}
+                    <p class="fst-italic fst-lighter fs-6 text-start">{{movie['plot']['plotText']['plainText']}}</p>
+                {% endif %}
+                {% endif %}
+                {% endif %}
                 <button class="btn btn-outline-primary" onclick="choose(this);" type="button" data-list="1" data-id="{{ movie['id'] }}" data-title="{{ movie['titleText']['text'] }}">Choose</button>
             </div>
         </div>
     {% endfor %}
     {% else %}
     <div class ="row bg-dark mb-4 p-4">
-    No movies found for {{q1}}
+    No movies found for '{{q1}}'
     </div>
     {% endif %}
 {% endblock %}
 
 {% block body %}
+<script>
+    document.getElementById("movie0").value = JSON.parse('{{ q0 | tojson }}');
+    document.getElementById("movie1").value = JSON.parse('{{ q1 | tojson }}');
+</script>
 <script src="/static/compare.js"></script>
 {% endblock %}

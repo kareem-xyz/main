@@ -7,7 +7,13 @@ TASKS
         - Find a solution to the no movie found problem
         - might have to fall back to the method of using a database.
 
-    # Work on reforming the image sizes and row sizes
+    # Refine homepage.html
+        show a bootstrap loading spinner to show page loading. use javascript for toggling visibility.
+        might require to change how the form element of search work to run a js function first, and then redirect to /search
+        
+    # Refine search.html
+        reforming the image sizes and row sizes, ratinos seem like a good start
+        reform truncation for text description
 
     # Design the comparison page between the two movies:
         # after the pressed compare button run compare()
@@ -16,8 +22,8 @@ TASKS
         # display these information
         
     # DONE :   
-        
-        - CSS Work on Choose Button (highlight chosen and unhighlight the others, by unhighlighting under the list div) 
+        - CSS Work on Choose Button (highlight chosen and unhighlight the others, by unhighlighting under the list div)
+        - Implement data exchange using ajax between javascript and python flask. 
         function choose(button):
         {
             ##....some code

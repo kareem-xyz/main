@@ -40,12 +40,13 @@ function choose(button)
     document.getElementById(tmp).value = movie.getAttribute("data-title");
 
 }
+// Run after choosing movie and pressing compare, to render compare.html
 function compare()
 {
     // Convert array to json
     choices_json =  JSON.stringify(choices);
 
-    // Post movies chosen back to the python flask app to process them and display the new page of content.
+    // Post movies' ids chosen back to the python flask app to process them and display the new page of content.
     $.post( "/compare", {
         choices: choices_json
     });
