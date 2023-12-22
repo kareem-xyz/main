@@ -12,7 +12,7 @@ TASKS
         might require to change how the form element of search work to run a js function first, and then redirect to /search
         
     # Refine search.html
-        reforming the image sizes and row sizes, ratinos seem like a good start
+        reforming the image sizes and row sizes, ratios seem like a good start
         reform truncation for text description
 
     # Design the comparison page between the two movies:

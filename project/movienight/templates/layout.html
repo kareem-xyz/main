@@ -16,7 +16,7 @@
         <div id="main" class="container" >
             <h1>Movie Night</h1>
             <br>
-            <form action="/search" method="post">
+            <form action="/search" method="post" id="searchform">
                 <div class="row gx-5 gy-4">
                   <div class="col">
                     <input name='movie0' id="movie0" type="text" class="form-control" placeholder="Movie Name" required autocomplete="off">
@@ -49,5 +49,12 @@
                 Api provided by <a href="https://rapidapi.com/SAdrian/api/moviesdatabase/">RapidApi</a>
             </footer>
         </div>
+        <script>
+            document.getElementById('searchform').addEventListener('submit', function(event)
+            {
+                 // SHOW SPINNER
+                alert("hello");
+            })
+        </script>
     </body>
 </html>
