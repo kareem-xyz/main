@@ -1,9 +1,11 @@
 {% extends 'layout.html' %}
 
 {% block formSearch %}
-    <div class="col-12">
-        <button type="submit" class="btn btn-warning w-50" onclick="compare();">Compare</button>
+<form>
+<div class="col-12">
+    <button type="submit" class="btn btn-warning w-50" onclick="compare(this);"><span class="spinner-border spinner-border-sm load-status" aria-hidden="true"></span> Compare</button>
     </div>
+</form>
 {% endblock %}
 
 {% block list0 %}
@@ -82,5 +84,5 @@
     document.getElementById("movie0").value = JSON.parse('{{ q0 | tojson }}');
     document.getElementById("movie1").value = JSON.parse('{{ q1 | tojson }}');
 </script>
-<script src="/static/compare.js"></script>
+<script src="static/compare.js"></script>
 {% endblock %}

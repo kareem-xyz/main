@@ -1,14 +1,14 @@
 // initialise variables for efficiency
-const choices = [2];    // Stores choices by movie id
-const highlighted = [2]; // for css highlighting, stores button
+var choices = [2];    // Stores choices by movie id
+var highlighted = [2]; // for css highlighting, stores button
 const list_0 = document.getElementById("list_0");   // References html element of list 0
 const list_1 = document.getElementById("list_1");   // References html element of list 1
 
 // Initialise Arrays
 for (let i = 0; i < 2; i++)
 {
-    choices[i] = "empty";
-    highlighted[i] = "empty"
+    choices[i] = "null";
+    highlighted[i] = "null"
 }
 
 // Run whenever a choose movie button is pressed to note the movie and makes sure to not conflict lists.

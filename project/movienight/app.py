@@ -8,19 +8,10 @@ app = Flask(__name__)
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
-####FOR TESTING
-@app.route('/test')
-def test():
-    return render_template('test.html')
-
-@app.route('/testnew')
-def testnew():
-    return render_template('testnew.html')
-#####
-# Load homepage
+# Load index
 @app.route('/')
-def homepage():
-    return render_template('homepage.html')
+def index():
+    return render_template('layout.html')
     
 @app.route('/search', methods=['GET', 'POST'])
 def search():
@@ -61,6 +52,8 @@ def compare():
     # Retrieve data from Javascript request and convert to list.
     data = request.form['choices']
     choices = json.loads(data)
+    if (choices[0] == "null") or (choices[1] == "null"):
+        return False
 
     # Api requests
     url = "https://moviesdatabase.p.rapidapi.com/titles/" # + /movie_id
@@ -80,4 +73,3 @@ def compare():
     m0_json = response_0.json()
     m1_json = response_1.json()
     
-    return render_template('compare.html', m0=m0_json, m1=m1_json)

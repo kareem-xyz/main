@@ -17,3 +17,11 @@ margin: auto;
 align-items: center;
 color: white;
 }
+.display-hide
+{
+    display: none;
+}
+.display-show
+{
+    display: inline-block;
+}

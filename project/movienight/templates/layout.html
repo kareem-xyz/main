@@ -16,21 +16,27 @@
         <div id="main" class="container" >
             <h1>Movie Night</h1>
             <br>
-            <form action="/search" method="post" id="searchform">
+            <form action="/search" method="post">
                 <div class="row gx-5 gy-4">
-                  <div class="col">
-                    <input name='movie0' id="movie0" type="text" class="form-control" placeholder="Movie Name" required autocomplete="off">
-                  </div>
-                  <div class="col">
-                    <input name='movie1' id='movie1'type="text" class="form-control" placeholder="Movie Name" required autocomplete="off">
-                  </div>
-                  <div class="col-12">
-                      <button type="submit" class="btn btn-outline-primary w-50">Search</button>
-                  </div>
-                  {% block formSearch %}
-                  {% endblock %}
+                    <div class="col">
+                        <input name='movie0' id="movie0" type="text" class="form-control" placeholder="Movie Name" required autocomplete="off">
+                    </div>
+                    <div class="col">
+                        <input name='movie1' id='movie1'type="text" class="form-control" placeholder="Movie Name" required autocomplete="off">
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-outline-primary w-50 ">
+                                <!-- Load status is a class used for all loading indicators -->
+                                <span class="spinner-border spinner-border-sm load-status"aria-hidden="true"></span> Search
+                        </button>
+                    </div>
                 </div>
             </form>
+            <div>
+                <br>
+                {% block formSearch %}
+                {% endblock %}
+            </div>
             <br>
             <div class="row row-cols-2 gx-5 gy-2">
                 <div class="col">
@@ -49,12 +55,6 @@
                 Api provided by <a href="https://rapidapi.com/SAdrian/api/moviesdatabase/">RapidApi</a>
             </footer>
         </div>
-        <script>
-            document.getElementById('searchform').addEventListener('submit', function(event)
-            {
-                 // SHOW SPINNER
-                alert("hello");
-            })
-        </script>
+        <script src="static/layout.js"></script>
     </body>
 </html>
