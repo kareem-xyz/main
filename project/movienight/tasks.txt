@@ -7,9 +7,9 @@ TASKS
         - Find a solution to the no movie found problem
         - might have to fall back to the method of using a database.
 
+    # Rename the variables exchanges throughout the website
     # Refine homepage.html
 
-        
     # Refine search.html
         reforming the image sizes and row sizes, ratios seem like a good start
         reform truncation for text description
@@ -19,10 +19,12 @@ TASKS
         # take both movies id from choices[]
         # run api request using id (not sure which endpoint to use yet)
         # display these information
+        # merge branch into main
 
     # Future ideas (extras):
         - Change from storing data internally in javascript code into using sessionstorage.
         - show a browse page with the top movies in imdb, or maybe in the homescreen itself.
+        - add a background to layout.html (for example a blurred picture of red cinema seats, or maybe blurred posters of films)
         
     # DONE :   
         - CSS Work on Choose Button (highlight chosen and unhighlight the others, by unhighlighting under the list div)

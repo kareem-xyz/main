@@ -15,7 +15,7 @@ for (let i = 0; i < list_form.length; i++)
     // THESE TWO FUNCTIONS MUST NOT BE MERGED, OTHERWISE CODE WILL BREAK
     
     // On form submit, add loading to elements
-    list_form[i].addEventListener('submit', function (event) 
+    list_form[i].addEventListener('submit', function () 
     {
         // Run over elements and add listener
         for (let k = 0; k < list_load_status.length; k++)
@@ -23,5 +23,6 @@ for (let i = 0; i < list_form.length; i++)
             list_load_status[k].classList.add('display-show');
             list_load_status[k].classList.remove('display-hide');
         }
+        return true;
     })
 };

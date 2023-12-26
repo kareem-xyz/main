@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+{% block title %}Compare{% endblock %}
+
+{% block formSearch %}
+<form>
+<div class="col-12">
+    <button type="button" class="btn btn-warning w-50"><span class="spinner-border spinner-border-sm load-status" aria-hidden="true"></span> Compare</button>
+</div>
+</form>
+{% endblock %}
+
+{% block list0 %}
+<div class ="row bg-dark mb-4 p-0">
+    <div class="col">
+        <img src="{{ m0['primaryImage']['url'] }}" class="img-fluid rounded object-fit-cover rounded float-start " onerror="this.onerror=null; this.src='static/noimage.jpg'">
+    </div>
+</div>
+<div class ="row bg-dark mb-4 p-0">
+    <div class="col text-start">
+        <h6>{{m0["titleText"]["text"] }} ({{m0["releaseYear"]["year"]}})</h6>
+        {% if m0['runtime']['seconds'] %}
+            {% set secs = m0['runtime']['seconds']%}
+            {% set mins, hours = secs//60%60, secs//3600, %}
+            <p class="fst-italic fst-lighter fs-6">
+            {% if hours > 0 %}{{hours}}h{% endif %} 
+            {% if mins > 0 %}{{mins}}m{% endif %}
+            </p>
+        {% endif %}
+    {% if m0["plot"] %}
+    {% if m0["plot"]["plotText"] %}
+    {% if m0["plot"]["plotText"]["plainText"] %}
+        <p class="fst-italic fst-lighter fs-6 text-start">{{m0['plot']['plotText']['plainText']}}</p>
+    {% endif %}
+    {% endif %}
+    {% endif %}
+        <br>
+    </div>
+</div>
+{% endblock %}
+
+{% block list1 %}
+<div class ="row bg-dark mb-4 p-0">
+    <div class="col">
+        <img src="{{ m1['primaryImage']['url'] }}" class="img-fluid rounded object-fit-cover rounded float-start " onerror="this.onerror=null; this.src='static/noimage.jpg'">
+    </div>
+</div>
+<div class ="row bg-dark mb-4 p-0">
+    <div class="col text-start">
+        <h6>{{m1["titleText"]["text"] }} ({{m1["releaseYear"]["year"]}})</h6>
+        {% if m1['runtime']['seconds'] %}
+            {% set secs = m1['runtime']['seconds']%}
+            {% set mins, hours = secs//60%60, secs//3600, %}
+            <p class="fst-italic fst-lighter fs-6">
+            {% if hours > 0 %}{{hours}}h{% endif %} 
+            {% if mins > 0 %}{{mins}}m{% endif %}
+            </p>
+        {% endif %}
+    {% if m1["plot"] %}
+    {% if m1["plot"]["plotText"] %}
+    {% if m1["plot"]["plotText"]["plainText"] %}
+        <p class="fst-italic fst-lighter fs-6 text-start">{{m0['plot']['plotText']['plainText']}}</p>
+    {% endif %}
+    {% endif %}
+    {% endif %}
+        <br>
+    </div>
+    </div>
+{% endblock %}
+

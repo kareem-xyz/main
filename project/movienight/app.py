@@ -49,11 +49,9 @@ def search():
 
 @app.route('/compare', methods=['POST'])
 def compare():
-    # Retrieve data from Javascript request and convert to list.
-    data = request.form['choices']
-    choices = json.loads(data)
-    if (choices[0] == "null") or (choices[1] == "null"):
-        return False
+    choices = []
+    choices.append(request.form.get('id_0'))
+    choices.append(request.form.get('id_1'))
 
     # Api requests
     url = "https://moviesdatabase.p.rapidapi.com/titles/" # + /movie_id
@@ -72,4 +70,6 @@ def compare():
     # Convert to json for exchanging data
     m0_json = response_0.json()
     m1_json = response_1.json()
+
+    return render_template('compare.html', m0=m0_json["results"], m1=m1_json["results"])
     
