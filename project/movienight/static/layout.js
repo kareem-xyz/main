@@ -2,7 +2,7 @@
 const list_form = Array.from(document.getElementsByTagName('form'));
 for (let i = 0; i < list_form.length; i++)
 {
-    // List of loading elements inside a form
+    // List of loading elements inside a form (elements that have this class should appear when loading and disappear when finished)
     const list_load_status = Array.from(list_form[i].getElementsByClassName('load-status'));
 
     // Remove loading mode at startup

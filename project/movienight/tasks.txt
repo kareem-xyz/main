@@ -8,8 +8,7 @@ TASKS
         - might have to fall back to the method of using a database.
 
     # Refine homepage.html
-        show a bootstrap loading spinner to show page loading. use javascript for toggling visibility.
-        might require to change how the form element of search work to run a js function first, and then redirect to /search
+
         
     # Refine search.html
         reforming the image sizes and row sizes, ratios seem like a good start
@@ -20,6 +19,10 @@ TASKS
         # take both movies id from choices[]
         # run api request using id (not sure which endpoint to use yet)
         # display these information
+
+    # Future ideas (extras):
+        - Change from storing data internally in javascript code into using sessionstorage.
+        - show a browse page with the top movies in imdb, or maybe in the homescreen itself.
         
     # DONE :   
         - CSS Work on Choose Button (highlight chosen and unhighlight the others, by unhighlighting under the list div)
@@ -37,4 +40,6 @@ TASKS
             }
             chosenbutton.classList.add("btn-primary");
         }
+        -show a bootstrap loading spinner to show page loading. use javascript for toggling visibility.
+        might require to change how the form element of search work to run a js function first, and then redirect to /search
     
