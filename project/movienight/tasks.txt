@@ -8,7 +8,6 @@ TASKS
         - might have to fall back to the method of using a database.
 
     # Rename the variables exchanges throughout the website
-    # Refine homepage.html
 
     # Refine search.html
         reforming the image sizes and row sizes, ratios seem like a good start

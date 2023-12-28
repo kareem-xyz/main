@@ -38,3 +38,12 @@ function choose(button)
     document.getElementById(tmp_input_field).value = movie.getAttribute("data-title");
 
 }
+// Truncates long text. Used in movie description for example
+/* Code borrowed from https://javascript.info/task/truncate#:~:text=Create%20a%20function%20truncate(str,truncated%20(if%20needed)%20string.
+function truncate(str, maxlength) 
+{
+    return (str.length > maxlength) ?
+      str.slice(0, maxlength - 1) + '…' : str;
+}
+USED A PYTHON FUNCTION INSTEAD
+// */ 

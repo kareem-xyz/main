@@ -30,7 +30,11 @@
         {% if movie["plot"] %}
         {% if movie["plot"]["plotText"] %}
         {% if movie["plot"]["plotText"]["plainText"] %}
-            <p class="fst-italic fst-lighter fs-6 text-start">{{movie['plot']['plotText']['plainText']}}</p>
+        {% set plot = movie['plot']['plotText']['plainText'] %}
+        {% if plot|length > 150 %}
+            {% set plot = (plot[:150] + '...') %}
+        {% endif %}
+            <p class="fst-italic fst-lighter fs-6 text-start">{{plot}}</p>
         {% endif %}
         {% endif %}
         {% endif %}
@@ -66,7 +70,11 @@
                 {% if movie["plot"] %}
                 {% if movie["plot"]["plotText"] %}
                 {% if movie["plot"]["plotText"]["plainText"] %}
-                    <p class="fst-italic fst-lighter fs-6 text-start">{{movie['plot']['plotText']['plainText']}}</p>
+                {% set plot = movie['plot']['plotText']['plainText'] %}
+                {% if plot|length > 150 %}
+                    {% set plot = (plot[:150] + '...') %}
+                {% endif %}
+                    <p class="fst-italic fst-lighter fs-6 text-start">{{plot}}</p>
                 {% endif %}
                 {% endif %}
                 {% endif %}
