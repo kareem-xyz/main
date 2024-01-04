@@ -69,7 +69,7 @@
         {% set mins, hours = secs//60%60, secs//3600, %}
         <p class="fst-italic fst-lighter fs-6">
             {% if hours > 0 %}{{hours}} hours{% endif %}
-            {% if mins > 0 %} and{{mins}}minutes{% endif %}
+            {% if mins > 0 %} and {{mins}} minutes{% endif %}
         </p>
         {% endif %}
         {% if m1["plot"] %}

@@ -11,7 +11,7 @@ TASKS
 
     # Refine search.html
         reforming the image sizes and row sizes, ratios seem like a good start
-        reform truncation for text description
+
 
     # Design the comparison page between the two movies:
         # after the pressed compare button run compare()
@@ -29,6 +29,7 @@ TASKS
     # DONE :   
         - CSS Work on Choose Button (highlight chosen and unhighlight the others, by unhighlighting under the list div)
         - Implement data exchange using ajax between javascript and python flask. 
+        - reform truncation for text description
         function choose(button):
         {
             ##....some code
