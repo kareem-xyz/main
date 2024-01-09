@@ -15,9 +15,9 @@
     {% for movie in list0 %}
     <div class ="row bg-dark mb-4 p-0">
         <div class="col ratio ratio-1x1">
-            <img src="{{ movie['primaryImage']['url'] }}" class="img-fluid rounded object-fit-cover rounded float-start " onerror="this.onerror=null; this.src='static/noimage.jpg'">
+            <img src="{{ movie['primaryImage']['url'] }}" class="img-fluid object-fit-cover rounded float-start " onerror="this.onerror=null; this.src='static/noimage.jpg'">
         </div>
-        <div class="col text-start">
+        <div class="col text-start p-4">
             <h6>{{movie["titleText"]["text"] }} ({{movie["releaseYear"]["year"]}})</h6>
             {% if movie['runtime']['seconds'] %}
                 {% set secs = movie['runtime']['seconds']%}

@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect 
 import json
 import requests # Used in the query Api
+from operator import itemgetter # used for sorting of responses from api
 
 # Configure Application
 app = Flask(__name__)
@@ -45,7 +46,11 @@ def search():
     m0_json = m0_response.json()
     m1_json = m1_response.json()
 
-    return render_template('search.html', list0=m0_json["results"], list1=m1_json["results"], q0=m0_input, q1=m1_input)
+    # Sort movies by if image is available, then by vote Count
+    m0_sorted = sorted(m0_json['results'], key=lambda x : (x['primaryImage'] is not None, x['ratingsSummary']['voteCount']), reverse=True)
+    m1_sorted = sorted(m0_json['results'], key=lambda x : (x['primaryImage'] is not None, x['ratingsSummary']['voteCount']), reverse=True)
+
+    return render_template('search.html', list0=m0_sorted, list1=m1_sorted, q0=m0_input, q1=m1_input)
 
 @app.route('/compare', methods=['POST'])
 def compare():
@@ -73,3 +78,15 @@ def compare():
 
     return render_template('compare.html', m0=m0_json["results"], m1=m1_json["results"])
     
+"""
+print itemgetter(id)(z)
+you are passing a list to itemgetter, while it expects indices (integers).
+
+What can you do? You can unpack the list using *:
+
+print itemgetter(*id)(z)
+to visualize this better, both following calls are equivalent:
+
+print itemgetter(1, 2, 3)(z)
+print itemgetter(*[1, 2, 3])(z)
+"""
