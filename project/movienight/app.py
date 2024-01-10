@@ -48,7 +48,7 @@ def search():
 
     # Sort movies by if image is available, then by vote Count
     m0_sorted = sorted(m0_json['results'], key=lambda x : (x['primaryImage'] is not None, x['ratingsSummary']['voteCount']), reverse=True)
-    m1_sorted = sorted(m0_json['results'], key=lambda x : (x['primaryImage'] is not None, x['ratingsSummary']['voteCount']), reverse=True)
+    m1_sorted = sorted(m1_json['results'], key=lambda x : (x['primaryImage'] is not None, x['ratingsSummary']['voteCount']), reverse=True)
 
     return render_template('search.html', list0=m0_sorted, list1=m1_sorted, q0=m0_input, q1=m1_input)
 
