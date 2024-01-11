@@ -1,13 +1,20 @@
 {% extends 'layout.html' %}
 
 {% block formSearch %}
-<form action="/compare" method="post">
-    <input type="hidden" id="choice_id_0" name="id_0" value="null" />
-    <input type="hidden" id="choice_id_1" name="id_1" value="null" />
-    <div class="col-12">
-    <button type='submit' class="btn btn-warning w-50"><span class="spinner-border spinner-border-sm load-status" aria-hidden="true"></span> Compare</button>
+<div class="row m-auto w-50">
+    <div class="col-6">
+        <form action="/compare" method="post">
+        <input type="hidden" id="choice_id_0" name="id_0" value="null" />
+        <input type="hidden" id="choice_id_1" name="id_1" value="null" />
+        <button type="submit" class="btn btn-warning w-100"><span class="spinner-border spinner-border-sm load-status" aria-hidden="true"></span><strong>Compare</strong></button>
+        </form>
     </div>
-</form>
+    <div class="col-6">
+        <form action="/fight" method="post">
+            <button type="button" class="btn bg-danger w-100"><span class="spinner-border spinner-border-sm load-status" aria-hidden="true"></span><strong>Fight</strong></button>
+        </form>
+    </div>
+</div>
 {% endblock %}
 
 {% block list0 %}
