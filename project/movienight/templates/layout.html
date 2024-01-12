@@ -18,7 +18,7 @@
         <div id="main" class="container" >
             <h1>Movie Night</h1>
             <br>
-            <form action="/search" method="post">
+            <form action="/search" method="post" id="search-form">
                 <div class="row gx-5 gy-4">
                     <div class="col">
                         <input name='movie0' id="movie0" type="text" class="form-control" placeholder="Movie Name" required autocomplete="off">
@@ -29,7 +29,7 @@
                     <div class="col-12">
                         <button type="submit" class="btn btn-outline-primary w-50 ">
                                 <!-- Load status is a class used for all loading indicators -->
-                                <span class="spinner-border spinner-border-sm load-status"aria-hidden="true"></span> Search
+                                <span class="spinner-border spinner-border-sm load-status display-hide"aria-hidden="true"></span> <strong>Search</strong>
                         </button>
                     </div>
                 </div>
@@ -58,5 +58,7 @@
             </footer>
         </div>
         <script src="static/layout.js"></script>
+        {% block scripts %}
+        {% endblock %}
     </body>
 </html>

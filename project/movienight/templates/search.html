@@ -6,12 +6,12 @@
         <form action="/compare" method="post">
         <input type="hidden" id="choice_id_0" name="id_0" value="null" />
         <input type="hidden" id="choice_id_1" name="id_1" value="null" />
-        <button type="submit" class="btn btn-warning w-100"><span class="spinner-border spinner-border-sm load-status" aria-hidden="true"></span><strong>Compare</strong></button>
+        <button type="submit" class="btn btn-warning w-100"><span class="spinner-border spinner-border-sm load-status display-hide" aria-hidden="true"></span><strong>Compare</strong></button>
         </form>
     </div>
     <div class="col-6">
         <form action="/fight" method="post">
-            <button type="button" class="btn bg-danger w-100"><span class="spinner-border spinner-border-sm load-status" aria-hidden="true"></span><strong>Fight</strong></button>
+            <button type="button" class="btn bg-danger w-100"><span class="spinner-border spinner-border-sm load-status display-hide" aria-hidden="true"></span><strong>Fight</strong></button>
         </form>
     </div>
 </div>
@@ -96,10 +96,15 @@
     {% endif %}
 {% endblock %}
 
-{% block body %}
+{% block scripts %}
 <script>
-    document.getElementById("movie0").value = JSON.parse('{{ q0 | tojson }}');
-    document.getElementById("movie1").value = JSON.parse('{{ q1 | tojson }}');
+    input = JSON.parse(sessionStorage.getItem('input'));
+    document.getElementById('movie0').value = input['m0']['name']
+    document.getElementById('movie1').value = input['m1']['name']
+
+    // Old Code to rerender of the search query inside input field
+    // document.getElementById("movie0").value = JSON.parse('{{ q0 | tojson }}');
+    // document.getElementById("movie1").value = JSON.parse('{{ q1 | tojson }}'); -->
 </script>
 <script src="static/helpers.js"></script>
 {% endblock %}
