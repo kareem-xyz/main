@@ -4,8 +4,8 @@
 <div class="row m-auto w-50">
     <div class="col-6">
         <form action="/compare" method="post">
-        <input type="hidden" id="choice_id_0" name="id_0" value="null" />
-        <input type="hidden" id="choice_id_1" name="id_1" value="null" />
+        <input type="hidden" id="choice_0" name="id_0" value="null" />
+        <input type="hidden" id="choice_1" name="id_1" value="null" />
         <button type="submit" class="btn btn-warning w-100"><span class="spinner-border spinner-border-sm load-status display-hide" aria-hidden="true"></span><strong>Compare</strong></button>
         </form>
     </div>
@@ -17,9 +17,9 @@
 </div>
 {% endblock %}
 
-{% block list0 %}
-    {% if list0 %}
-    {% for movie in list0 %}
+{% block col_0 %}
+    {% if datalist_0 %}
+    {% for movie in datalist_0 %}
     <div class ="row bg-dark mb-4 p-0">
         <div class="col ratio ratio-1x1">
             <img src="{{ movie['primaryImage']['url'] }}" class="img-fluid object-fit-cover rounded float-start " onerror="this.onerror=null; this.src='static/noimage.jpg'">
@@ -33,33 +33,33 @@
                 {% if hours > 0 %}{{hours}}h{% endif %} 
                 {% if mins > 0 %}{{mins}}m{% endif %}
                 </p>
-        {% endif %}
-        {% if movie["plot"] %}
-        {% if movie["plot"]["plotText"] %}
-        {% if movie["plot"]["plotText"]["plainText"] %}
-        {% set plot = movie['plot']['plotText']['plainText'] %}
-        {% if plot|length > 150 %}
-            {% set plot = (plot[:150] + '...') %}
-        {% endif %}
-            <p class="fst-italic fst-lighter fs-6 text-start">{{plot}}</p>
-        {% endif %}
-        {% endif %}
-        {% endif %}
+            {% endif %}
+            {% if movie["plot"] %}
+            {% if movie["plot"]["plotText"] %}
+            {% if movie["plot"]["plotText"]["plainText"] %}
+            {% set plot = movie['plot']['plotText']['plainText'] %}
+            {% if plot|length > 150 %}
+                {% set plot = (plot[:150] + '...') %}
+            {% endif %}
+            {% endif %}
+            {% endif %}
+            {% endif %}
+            <p class="fst-italic fst-lighter fs-6 text-start plot">{{plot}}</p>
             <br>
-            <button class="btn btn-outline-primary" onclick="choose(this);" type="button" data-list="0" data-id="{{ movie['id'] }}" data-title="{{ movie['titleText']['text'] }}">Choose</button>
+            <button class="btn btn-outline-primary" onclick="choose(this);" type="button" data-list="0" data-index="{{ loop.index0 }}" data-title="{{ movie['titleText']['text'] }}">Choose</button>
         </div>
     </div>
     {% endfor %}
     {% else %}
     <div class ="row bg-dark mb-4 p-4">
-    NO movies found for '{{q0}}'
+    No movies found
     </div>
     {% endif %}
 {% endblock %}
 
-{% block list1 %}
-    {% if list1 %}
-    {% for movie in list1 %}
+{% block col_1 %}
+    {% if datalist_1 %}
+    {% for movie in datalist_1 %}
         <div class ="row bg-dark mb-4 p-0">
             <div class="col ratio ratio-1x1">
                 <img src="{{ movie['primaryImage']['url'] }}" class="img-fluid object-fit-cover rounded float-start" onerror="this.onerror=null; this.src='static/noimage.jpg'">
@@ -85,26 +85,21 @@
                 {% endif %}
                 {% endif %}
                 {% endif %}
-                <button class="btn btn-outline-primary" onclick="choose(this);" type="button" data-list="1" data-id="{{ movie['id'] }}" data-title="{{ movie['titleText']['text'] }}">Choose</button>
+                <button class="btn btn-outline-primary" onclick="choose(this);" type="button" data-list="1" data-index="{{ loop.index0 }}" data-title="{{ movie['titleText']['text'] }}">Choose</button>
             </div>
         </div>
     {% endfor %}
     {% else %}
     <div class ="row bg-dark mb-4 p-4">
-    No movies found for '{{q1}}'
+    No movies found
     </div>
     {% endif %}
 {% endblock %}
-
-{% block scripts %}
+{% block scripts_body %}
 <script>
-    input = JSON.parse(sessionStorage.getItem('input'));
-    document.getElementById('movie0').value = input['m0']['name']
-    document.getElementById('movie1').value = input['m1']['name']
-
-    // Old Code to rerender of the search query inside input field
-    // document.getElementById("movie0").value = JSON.parse('{{ q0 | tojson }}');
-    // document.getElementById("movie1").value = JSON.parse('{{ q1 | tojson }}'); -->
+    // Convert Passed data to JS object for usage
+    datalist_0 = JSON.parse('{{datalist_0 | tojson | safe}}');
+    datalist_1 = JSON.parse('{{datalist_1 | tojson | safe}}');
 </script>
 <script src="static/helpers.js"></script>
 {% endblock %}

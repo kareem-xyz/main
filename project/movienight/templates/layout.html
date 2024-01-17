@@ -11,6 +11,9 @@
         <link href="static/styles.css" rel="stylesheet">
         <link rel="icon" href="static/favicon.png">
 
+        {% block scripts_head %}
+        {% endblock %}
+
         <title>MovieNight: {% block title %}{% endblock %}</title>
     </head>
 
@@ -18,7 +21,7 @@
         <div id="main" class="container" >
             <h1>Movie Night</h1>
             <br>
-            <form action="/search" method="post" id="search-form">
+            <form action="/search" method="get" id="search-form">
                 <div class="row gx-5 gy-4">
                     <div class="col">
                         <input name='movie0' id="movie0" type="text" class="form-control" placeholder="Movie Name" required autocomplete="off">
@@ -42,11 +45,11 @@
             <br>
             <div class="row row-cols-2 gx-5 gy-2">
                 <div class="col">
-                    {% block list0 %}
+                    {% block col_0 %}
                     {% endblock %}
                 </div>
                 <div class="col">
-                    {% block list1 %}
+                    {% block col_1 %}
                     {% endblock %}
                 </div>
             </div>
@@ -58,7 +61,7 @@
             </footer>
         </div>
         <script src="static/layout.js"></script>
-        {% block scripts %}
+        {% block scripts_body %}
         {% endblock %}
     </body>
 </html>

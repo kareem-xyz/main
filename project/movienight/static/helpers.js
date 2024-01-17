@@ -1,7 +1,7 @@
 // initialise variables for efficiency
 var highlighted = [2]; // for css highlighting, stores button
-const list_0 = document.getElementById("list_0");   // References html element of list 0
-const list_1 = document.getElementById("list_1");   // References html element of list 1
+const col_0 = document.getElementById("col_0");   // References html element of list 0
+const col_1 = document.getElementById("col_1");   // References html element of list 1
 
 // Initialise Arrays
 for (let i = 0; i < 2; i++)
@@ -13,7 +13,17 @@ for (let i = 0; i < 2; i++)
 function choose(button)
 {
     var movie = button;
-    movie_list = movie.getAttribute("data-list")
+    movie_list = movie.getAttribute("data-list");
+
+    if (highlighted[movie_list])
+    {
+        if (highlighted[movie_list] == movie)
+        {
+            return
+        };
+    };
+
+    movie_index = movie.getAttribute("data-index");
     
     // Highlight new chosen movie
     movie.innerHTML = "Chosen!";
@@ -24,26 +34,29 @@ function choose(button)
         // Remove highlight from the movie chosen before 
         highlighted[movie_list].classList.add("btn-outline-primary");
         highlighted[movie_list].classList.remove("btn-primary");
-        highlighted[movie_list].innerHTML = "Choose"
+        highlighted[movie_list].innerHTML = "Choose";
     }
     catch(err) 
     {
+        console.log(err)
     }
 
 
-    // Save new movie
+    // Add highlighting css
     highlighted[movie_list] = movie;
-    document.getElementById('choice_id_' + movie_list).value = movie.getAttribute("data-id")
-    tmp_input_field = 'movie' + movie_list;
-    document.getElementById(tmp_input_field).value = movie.getAttribute("data-title");
 
+    // Set input field for the compare form ( notice how the variables are interpolated inside the back-ticked (``) strings using the JS symbol $)
+    // Update input field for search form
+
+    document.getElementById(`movie${movie_list}`).value = movie.getAttribute("data-title");
+    // Save the new movie' data
+    if (movie_list == '0'){
+        sessionStorage.setItem('choice_0', JSON.stringify(datalist_0[Number(movie_index)]));
+        // Input in compare form
+        document.getElementById(`choice_${movie_list}`).value = JSON.stringify(datalist_0[Number(movie_index)]);
+    }
+    else {
+        sessionStorage.setItem('choice_1', JSON.stringify(datalist_1[Number(movie_index)]));
+        document.getElementById(`choice_${movie_list}`).value = JSON.stringify(datalist_1[Number(movie_index)]);
+    }
 }
-// Truncates long text. Used in movie description for example
-/* Code borrowed from https://javascript.info/task/truncate#:~:text=Create%20a%20function%20truncate(str,truncated%20(if%20needed)%20string.
-function truncate(str, maxlength) 
-{
-    return (str.length > maxlength) ?
-      str.slice(0, maxlength - 1) + '…' : str;
-}
-USED A PYTHON FUNCTION INSTEAD
-// */ 
