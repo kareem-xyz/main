@@ -74,6 +74,8 @@ def search():
             
     return render_template('search.html', datalist_0=data_0, datalist_1=data_1)
 
+# DEPRECATED FOR NOW
+"""
 @app.route('/compare', methods=['POST'])
 def compare():
     choices = []
@@ -99,3 +101,8 @@ def compare():
     json_1 = response_1.json()
 
     return render_template('compare.html', m0=json_0["results"], m1=json_1["results"])
+"""
+
+@app.route("/fight", methods=['POST', 'GET'])
+def fight():
+    return render_template('questions.html')

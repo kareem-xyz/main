@@ -2,16 +2,18 @@
 
 {% block formSearch %}
 <div class="row m-auto w-50">
-    <div class="col-6">
+    <!-- DEPRECATED FOR NOW -->
+    <!-- <div class="col-6">
         <form action="/compare" method="post">
         <input type="hidden" id="choice_0" name="id_0" value="null" />
         <input type="hidden" id="choice_1" name="id_1" value="null" />
         <button type="submit" class="btn btn-warning w-100"><span class="spinner-border spinner-border-sm load-status display-hide" aria-hidden="true"></span><strong>Compare</strong></button>
         </form>
-    </div>
-    <div class="col-6">
-        <form action="/fight" method="post">
-            <button type="button" class="btn bg-danger w-100"><span class="spinner-border spinner-border-sm load-status display-hide" aria-hidden="true"></span><strong>Fight</strong></button>
+    </div> -->
+    <div class="col-12">
+        <form onsubmit="return InputAndSubmit(event)" action="/fight" method="post">
+            <!-- Form input is dynamically imported from sessionStorage, and added through JS  -->
+            <button type="submit" class="btn bg-danger w-100"><span class="spinner-border spinner-border-sm load-status display-hide" aria-hidden="true"></span><strong> Fight</strong></button>
         </form>
     </div>
 </div>
@@ -98,8 +100,8 @@
 {% block scripts_body %}
 <script>
     // Convert Passed data to JS object for usage
-    datalist_0 = JSON.parse('{{datalist_0 | tojson | safe}}');
-    datalist_1 = JSON.parse('{{datalist_1 | tojson | safe}}');
+    const datalist_0 = JSON.parse('{{datalist_0 | tojson | safe}}');
+    const datalist_1 = JSON.parse('{{datalist_1 | tojson | safe}}');
 </script>
 <script src="static/helpers.js"></script>
 {% endblock %}

@@ -13,8 +13,8 @@ else
     input = 
     {
         // m0 and m1 can be accessed using input.m0 or input.m1 because they are not indexers they are a property of the object
-        'm0' : 'Movie Name',
-        'm1' : 'Movie Name'
+        'm0' : '',
+        'm1' : ''
     }
 }
     // Rerender input in name field
