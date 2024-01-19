@@ -3,5 +3,7 @@
     "editor.guides.highlightActiveBracketPair": false,
     "editor.guides.bracketPairsHorizontal": false,
     "C_Cpp.errorSquiggles": "disabled",
-    "zenMode.hideLineNumbers": false
+    "zenMode.hideLineNumbers": false,
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.autoImportCompletions": true
 }

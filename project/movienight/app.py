@@ -1,6 +1,8 @@
+from os import error
 from flask import Flask, render_template, request, redirect 
 import json
 import requests # Used in the query Api
+from operator import itemgetter # used for sorting of responses from api
 
 # Configure Application
 app = Flask(__name__)
@@ -8,36 +10,27 @@ app = Flask(__name__)
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
-####FOR TESTING
-@app.route('/test')
-def test():
-    return render_template('test.html')
-
-@app.route('/testnew')
-def testnew():
-    return render_template('testnew.html')
-#####
-# Load homepage
+# Load index
 @app.route('/')
-def homepage():
-    return render_template('homepage.html')
+def index():
+    return render_template('layout.html')
     
-@app.route('/search', methods=['GET', 'POST'])
+@app.route('/search')
 def search():
-    m0_input = request.form.get("movie0")
-    m1_input = request.form.get("movie1")
+    # Using GET (also from forms) if I used POST I would have used request.form.get
+    input_0 = request.args.get("movie0")
+    input_1 = request.args.get("movie1")
     
     # Check for invalid input
-    if not (m0_input and m1_input):
+    if not (input_0 and input_1):
         return redirect('/')
     
     # Movie Databases Api to get Movie's Data.
     # https://rapidapi.com/SAdrian/api/moviesdatabase/
-    #----
 
     # Format Api Urls for each movie inputed
-    m0_url = "https://moviesdatabase.p.rapidapi.com/titles/search/title/" + m0_input
-    m1_url = "https://moviesdatabase.p.rapidapi.com/titles/search/title/" + m1_input
+    url_0 = "https://moviesdatabase.p.rapidapi.com/titles/search/title/" + input_0
+    url_1 = "https://moviesdatabase.p.rapidapi.com/titles/search/title/" + input_1
 
     # Api Specifics (login key and query parameters)
     querystring = {"exact":"false","titleType":"movie", "info":"custom_info"}
@@ -47,20 +40,47 @@ def search():
     }
 
     # Run Api
-    m0_response = requests.get(m0_url, headers=headers, params=querystring)
-    m1_response = requests.get(m1_url, headers=headers, params=querystring)
+    response_0 = requests.get(url_0, headers=headers, params=querystring)
+    response_1 = requests.get(url_1, headers=headers, params=querystring)
 
     # Convert response to json format to exchange with JS
-    m0_json = m0_response.json()
-    m1_json = m1_response.json()
+    json_0 = response_0.json()
+    json_1 = response_1.json()
 
-    return render_template('search.html', list0=m0_json["results"], list1=m1_json["results"], q0=m0_input, q1=m1_input)
+    # Take the useful data only
+    data_0 = json_0['results']
+    data_1 = json_1['results']
 
+    # Format Movies for sending (jsonifying and sorting)
+    if data_0:
+        data_0 = sorted(data_0, key=lambda x : (x['primaryImage'] is not None, x['ratingsSummary']['voteCount']), reverse=True)
+        for i in range(len(data_0)) :
+            try:
+                data_0[i]['plot']['plotText']['plainText'] = data_0[i]['plot']['plotText']['plainText'].replace('"', "'")
+            except TypeError as t:
+                print(i)
+                print(t)
+                continue
+
+    if data_1:
+        data_1 = sorted(data_1, key=lambda x : (x['primaryImage'] is not None, x['ratingsSummary']['voteCount']), reverse=True)
+        for i in range(len(data_1)) :
+            try:
+                data_1[i]['plot']['plotText']['plainText'] = data_1[i]['plot']['plotText']['plainText'].replace('"', "'")
+            except TypeError as t:
+                print(i)
+                print(t)
+                continue
+            
+    return render_template('search.html', datalist_0=data_0, datalist_1=data_1)
+
+# DEPRECATED FOR NOW
+"""
 @app.route('/compare', methods=['POST'])
 def compare():
-    # Retrieve data from Javascript request and convert to list.
-    data = request.form['choices']
-    choices = json.loads(data)
+    choices = []
+    choices.append(request.form.get('id_0'))
+    choices.append(request.form.get('id_1'))
 
     # Api requests
     url = "https://moviesdatabase.p.rapidapi.com/titles/" # + /movie_id
@@ -77,7 +97,12 @@ def compare():
     response_1 = requests.get(url + choices[1], headers=headers, params=querystring)
 
     # Convert to json for exchanging data
-    m0_json = response_0.json()
-    m1_json = response_1.json()
-    
-    return render_template('compare.html', m0=m0_json, m1=m1_json)
+    json_0 = response_0.json()
+    json_1 = response_1.json()
+
+    return render_template('compare.html', m0=json_0["results"], m1=json_1["results"])
+"""
+
+@app.route("/fight", methods=['POST', 'GET'])
+def fight():
+    return render_template('questions.html')

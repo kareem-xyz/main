@@ -7,23 +7,22 @@ TASKS
         - Find a solution to the no movie found problem
         - might have to fall back to the method of using a database.
 
-    # Refine homepage.html
-        show a bootstrap loading spinner to show page loading. use javascript for toggling visibility.
-        might require to change how the form element of search work to run a js function first, and then redirect to /search
-        
-    # Refine search.html
-        reforming the image sizes and row sizes, ratinos seem like a good start
-        reform truncation for text description
+    # Rename the variables exchanges throughout the website
 
-    # Design the comparison page between the two movies:
-        # after the pressed compare button run compare()
-        # take both movies id from choices[]
-        # run api request using id (not sure which endpoint to use yet)
-        # display these information
+    # Refine search.html
+        reforming the image sizes and row sizes, ratios seem like a good start
+
+    # Future ideas (extras):
+
+        - show a browse page with the top movies in imdb, or maybe in the homescreen itself.
+        - work on efficency and perhaps migrating the computation of varibales in jinnja to the python flask app
         
     # DONE :   
+        - add a background to layout.html (for example a blurred picture of red cinema seats, or maybe blurred posters of films)
+        - Change from storing data internally in javascript code into using sessionstorage.
         - CSS Work on Choose Button (highlight chosen and unhighlight the others, by unhighlighting under the list div)
         - Implement data exchange using ajax between javascript and python flask. 
+        - reform truncation for text description
         function choose(button):
         {
             ##....some code
@@ -37,4 +36,6 @@ TASKS
             }
             chosenbutton.classList.add("btn-primary");
         }
+        -show a bootstrap loading spinner to show page loading. use javascript for toggling visibility.
+        might require to change how the form element of search work to run a js function first, and then redirect to /search
     
